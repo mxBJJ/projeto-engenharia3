@@ -1,0 +1,53 @@
+body{
+    padding: 0;
+    margin: 0;
+
+}
+
+header{
+    box-shadow: 1px 1px 1px 1px rgb(228, 226, 226);
+   
+}
+h1{
+  display: inline;
+  position: fixed;
+  padding-left: 20px;
+  
+}
+ul{
+    list-style-type: none;
+    padding: 20px;
+}
+#menu{
+    
+    display: flex; 
+    justify-content: flex-end; 
+    
+}   
+.item-menu {
+    
+    display: flex;
+    padding: 10px;
+    
+}
+
+li a{
+    text-decoration: none;
+    padding: 2px;
+    color:black;
+}
+
+#jogos{
+    padding-left: 25%;
+   
+}
+#categorias{
+    box-shadow: 1px 1px 1px 1px rgb(228, 226, 226);
+    width: 20%;
+}
+
+footer{
+    background-color: rgb(49, 49, 49);
+    color: white;
+    padding: 10px;
+}
