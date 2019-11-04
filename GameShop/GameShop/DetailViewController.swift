@@ -52,7 +52,12 @@ class DetailViewController: UIViewController {
             cartItem.price = game.gamePrice
             print("Created game!")
         
-            
+        }
+        
+        do{
+            try context.save()
+        }catch{
+            print("Erro ao salvar no carrinho!")
         }
         
         self.tabBarController?.selectedIndex = 2

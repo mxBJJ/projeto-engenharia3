@@ -26,11 +26,10 @@ class CartTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func prepareCell(with game: Game){
+    func prepareCell(with cartItem: Cart ){
         
-        gameName.text = game.gameName
-        gameImg.image = game.gameImage
-        gamePrice.text = "R$ \(String(format: "%.2f" ,game.gamePrice))"
+        gameName.text = cartItem.name
+        gamePrice.text = "R$ \(String(format: "%.2f" ,cartItem.price))"
     }
 
 }

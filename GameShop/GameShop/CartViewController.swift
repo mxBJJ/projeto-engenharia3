@@ -7,14 +7,37 @@
 //
 
 import UIKit
+import CoreData
 
 class CartViewController: UIViewController {
 
     @IBOutlet weak var tableViewCart: UITableView!
+    
+      var fetchedResultsController: NSFetchedResultsController<Cart>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        loadCart()
+    }
+    
+    
+    func loadCart(){
+        
+        let fetchRequest: NSFetchRequest<Cart> = Cart.fetchRequest()
+              let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+              fetchRequest.sortDescriptors = [sortDescriptor]
+              
+              
+              fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+              
+              fetchedResultsController.delegate = self
+              
+              
+              do{
+              try fetchedResultsController.performFetch()
+              }catch{
+                  print(error.localizedDescription)
+              }
     }
 
 
@@ -23,15 +46,36 @@ class CartViewController: UIViewController {
 extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 0
+        let count = fetchedResultsController.fetchedObjects?.count ?? 0
+        
+        return count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cartGame", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cartGame", for: indexPath) as! CartTableViewCell
         
+        
+        guard let cartItem = fetchedResultsController.fetchedObjects?[indexPath.row] else{return cell}
+        
+        cell.prepareCell(with: cartItem)
         
         return cell
     }
 
+    
+}
+
+
+extension CartViewController: NSFetchedResultsControllerDelegate{
+  
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+
+        switch type {
+        case .delete:
+            break
+        default:
+            tableViewCart.reloadData()
+        }
+    }
     
 }
