@@ -1,33 +1,37 @@
-////
-////  CartViewController.swift
-////  GameShop
-////
-////  Created by Max Mendes on 04/11/19.
-////  Copyright © 2019 Max Mendes. All rights reserved.
-////
 //
-//import UIKit
+//  CartViewController.swift
+//  GameShop
 //
-//class CartViewController: UIViewController {
+//  Created by Max Mendes on 04/11/19.
+//  Copyright © 2019 Max Mendes. All rights reserved.
 //
-//    @IBOutlet weak var tableViewCart: UITableView!
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view.
-//    }
-//
-//
-//}
-//
-//extension CartViewController: UITableViewDelegate, UITableViewDataSource{
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//
-//    
-//}
+
+import UIKit
+
+class CartViewController: UIViewController {
+
+    @IBOutlet weak var tableViewCart: UITableView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+
+
+}
+
+extension CartViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cartGame", for: indexPath)
+        
+        
+        return cell
+    }
+
+    
+}
