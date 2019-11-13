@@ -612,6 +612,7 @@
                                                 <constraint firstItem="rOl-Ft-YaB" firstAttribute="top" secondItem="Mee-RI-g3O" secondAttribute="topMargin" constant="32" id="ZTz-uz-2pm"/>
                                                 <constraint firstItem="cHu-fK-ipQ" firstAttribute="leading" secondItem="ifm-Hz-4Ei" secondAttribute="trailing" constant="8" id="h0Y-YU-bNG"/>
                                                 <constraint firstItem="rOl-Ft-YaB" firstAttribute="leading" secondItem="cHu-fK-ipQ" secondAttribute="trailing" constant="4" id="qw9-cG-SS2"/>
+                                                <constraint firstItem="aze-vc-56z" firstAttribute="leading" secondItem="rOl-Ft-YaB" secondAttribute="trailing" constant="17" id="vg3-gD-B9H"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
