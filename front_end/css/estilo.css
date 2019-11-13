@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
+
 body{
     padding: 0;
     margin: 0;
@@ -12,8 +14,16 @@ h1{
   display: inline;
   position: fixed;
   padding-left: 20px;
+  font-family: bebas-neue;
+  font-size: 30px;
   
 }
+
+@font-face{
+    font-family: bebas-neue;
+    src: url(../fonts/BebasNeue-Regular.otf);
+}
+
 ul{
     list-style-type: none;
     padding: 20px;
@@ -37,17 +47,28 @@ li a{
     color:black;
 }
 
+li a:hover{
+    color:green;
+
+}
+
 #jogos{
     padding-left: 25%;
+    height: 500px;
+    margin-bottom: 100px;
    
 }
 #categorias{
     box-shadow: 1px 1px 1px 1px rgb(228, 226, 226);
     width: 20%;
+    position: absolute;
+    font-family: 'Roboto Slab', serif;
 }
 
 footer{
     background-color: rgb(49, 49, 49);
     color: white;
     padding: 10px;
+    position: relative;
+    font-family: 'Roboto Slab', serif;
 }
