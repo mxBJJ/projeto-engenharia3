@@ -667,6 +667,9 @@
                                 <state key="normal" title="COMPRAR">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="B5s-Pt-dgH" kind="show" id="pfZ-2h-UH2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -693,6 +696,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="72n-PX-CuY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="672.79999999999995" y="831.63418290854577"/>
+        </scene>
+        <!--Payment View Controller-->
+        <scene sceneID="CRW-sR-iu6">
+            <objects>
+                <viewController id="B5s-Pt-dgH" customClass="PaymentViewController" customModule="GameShop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zOk-Dq-FUz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lsp-pf-4Ei">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Lsp-pf-4Ei" firstAttribute="leading" secondItem="bFf-YQ-98E" secondAttribute="leading" id="0fY-cl-e1g"/>
+                            <constraint firstItem="Lsp-pf-4Ei" firstAttribute="trailing" secondItem="bFf-YQ-98E" secondAttribute="trailing" id="Bnv-bM-2rO"/>
+                            <constraint firstItem="Lsp-pf-4Ei" firstAttribute="bottom" secondItem="bFf-YQ-98E" secondAttribute="bottom" id="UkQ-8p-KR9"/>
+                            <constraint firstItem="Lsp-pf-4Ei" firstAttribute="top" secondItem="bFf-YQ-98E" secondAttribute="top" id="vAy-VG-LS8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bFf-YQ-98E"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BBW-at-nXg"/>
+                    <connections>
+                        <outlet property="webView" destination="Lsp-pf-4Ei" id="W66-E1-kTY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I3y-xb-zOh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1516" y="831.63418290854577"/>
         </scene>
         <!--Configurações-->
         <scene sceneID="mT1-a5-Cok">
