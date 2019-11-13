@@ -30,6 +30,7 @@ class CartTableViewCell: UITableViewCell {
         
         gameName.text = cartItem.name
         gamePrice.text = "R$ \(String(format: "%.2f" ,cartItem.price))"
+        gameImg.image = cartItem.image as! UIImage
     }
 
 }

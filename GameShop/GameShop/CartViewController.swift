@@ -11,6 +11,7 @@ import CoreData
 
 class CartViewController: UIViewController {
 
+    @IBOutlet weak var btnBuy: UIButton!
     @IBOutlet weak var tableViewCart: UITableView!
     
       var fetchedResultsController: NSFetchedResultsController<Cart>!
@@ -18,6 +19,7 @@ class CartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCart()
+        
     }
     
     
@@ -27,11 +29,9 @@ class CartViewController: UIViewController {
               let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
               fetchRequest.sortDescriptors = [sortDescriptor]
               
-              
               fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
               
               fetchedResultsController.delegate = self
-              
               
               do{
               try fetchedResultsController.performFetch()
@@ -39,14 +39,16 @@ class CartViewController: UIViewController {
                   print(error.localizedDescription)
               }
     }
-
-
+    
+    
 }
 
 extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         let count = fetchedResultsController.fetchedObjects?.count ?? 0
+        
+        count == 0 ? (btnBuy.isHidden = true) : (btnBuy.isHidden = false)
         
         return count
     }
@@ -61,10 +63,25 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
         
         return cell
     }
-
     
-}
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            
+            guard let game = fetchedResultsController.fetchedObjects?[indexPath.row] else {return}
+         
+            context.delete(game)
+            
+            do{
+                try context.save()
+            }catch{
+                print("Fail on save!")
+            }
+            
+        }
+    }
 
+}
 
 extension CartViewController: NSFetchedResultsControllerDelegate{
   
@@ -72,7 +89,10 @@ extension CartViewController: NSFetchedResultsControllerDelegate{
 
         switch type {
         case .delete:
-            break
+            if let indexPath = indexPath{
+                tableViewCart.deleteRows(at: [indexPath], with: .fade)
+    
+            }
         default:
             tableViewCart.reloadData()
         }

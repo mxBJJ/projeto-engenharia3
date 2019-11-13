@@ -50,6 +50,7 @@ class DetailViewController: UIViewController {
             
             cartItem.name = game.gameName
             cartItem.price = game.gamePrice
+            cartItem.image = game.gameImage
             print("Created game!")
         
         }
