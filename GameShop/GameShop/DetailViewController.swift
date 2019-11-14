@@ -25,7 +25,11 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(game?.gameName)
+        
+        game.starState = UserDefaults.standard.bool(forKey: "\(game.gameName)")
+        
         starActive = game.starState
+        
         if(starActive == false){
             btnStar.setImage(UIImage(named: "star-2"), for: .normal)
         }else{
@@ -77,12 +81,16 @@ class DetailViewController: UIViewController {
         
         if(starActive == false){
             btnStar.setImage(UIImage(named: "star"), for: .normal)
-            game.starState = true
             self.starActive = true
+            game.starState = true
+            UserDefaults.standard.set(true, forKey: "\(game.gameName)")
+            
         }else{
             btnStar.setImage(UIImage(named: "star-2"), for: .normal)
-            game.starState = false
             self.starActive = false
+            game.starState = false
+            UserDefaults.standard.set(false, forKey: "\(game.gameName)")
+
         }
         
     }
