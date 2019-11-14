@@ -14,17 +14,24 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var gameImg: UIImageView!
     @IBOutlet weak var gameName: UILabel!
     @IBOutlet weak var gamePrice: UILabel!
+    @IBOutlet weak var btnStar: UIButton!
     
     var game: Game!
     var cart: Cart?
-   
+    var starActive: Bool!
+
+  
     
     override func viewDidLoad() {
-        print(game?.gameName)
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-
+        print(game?.gameName)
+        starActive = game.starState
+        if(starActive == false){
+            btnStar.setImage(UIImage(named: "star-2"), for: .normal)
+        }else{
+              btnStar.setImage(UIImage(named: "star"), for: .normal)
+        }
+        
         
         if let name = game?.gameName {
             gameName.text = name
@@ -66,14 +73,25 @@ class DetailViewController: UIViewController {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func verifyStar(starActive: Bool){
+        
+        if(starActive == false){
+            btnStar.setImage(UIImage(named: "star"), for: .normal)
+            game.starState = true
+            self.starActive = true
+        }else{
+            btnStar.setImage(UIImage(named: "star-2"), for: .normal)
+            game.starState = false
+            self.starActive = false
+        }
+        
     }
-    */
+    
+    @IBAction func addFavorite(_ sender: Any) {
+        
+        verifyStar(starActive: starActive)
+        
+    }
+    
 
 }

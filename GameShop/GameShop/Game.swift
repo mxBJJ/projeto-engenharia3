@@ -14,11 +14,13 @@ class Game{
     var gameImage: UIImage
     var gameName: String
     var gamePrice: Double
+    var starState: Bool
     
     init(gameImage: UIImage, gameName: String, gamePrice: Double) {
         self.gameImage = gameImage
         self.gameName = gameName
         self.gamePrice = gamePrice
+        self.starState = false
     }
     
     
