@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class DetailViewController: UIViewController {
-
+    
     @IBOutlet weak var gameImg: UIImageView!
     @IBOutlet weak var gameName: UILabel!
     @IBOutlet weak var gamePrice: UILabel!
@@ -19,12 +19,12 @@ class DetailViewController: UIViewController {
     var game: Game!
     var cart: Cart?
     var starActive: Bool!
-
-  
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(game?.gameName)
+        print(game?.gameName ?? "Empty")
         
         game.starState = UserDefaults.standard.bool(forKey: "\(game.gameName)")
         
@@ -33,7 +33,7 @@ class DetailViewController: UIViewController {
         if(starActive == false){
             btnStar.setImage(UIImage(named: "star-2"), for: .normal)
         }else{
-              btnStar.setImage(UIImage(named: "star"), for: .normal)
+            btnStar.setImage(UIImage(named: "star"), for: .normal)
         }
         
         
@@ -56,24 +56,35 @@ class DetailViewController: UIViewController {
     @IBAction func buyAction(_ sender: Any) {
         
         if cart == nil{
-           
-        let cartItem = Cart(context: context)
+            
+            let cartItem = Cart(context: context)
             
             cartItem.name = game.gameName
             cartItem.price = game.gamePrice
             cartItem.image = game.gameImage
             print("Created game!")
-        
+            
         }
         
-        do{
-            try context.save()
-        }catch{
-            print("Erro ao salvar no carrinho!")
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+    
+    
+        
+        if context.hasChanges {
+            do {
+                try context.save()
+                let alert = UIAlertController(title: "Adicionado ao carrinho", message: "Seu game foi adicionado ao carrinho com sucesso! Caso o item já esteja no carrinho, nos informe a quantidade desejada.", preferredStyle: .alert)
+
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+                self.present(alert, animated: true)
+                self.tabBarController?.selectedIndex = 2
+                
+            } catch {
+                
+                print("Error!")
+            }
         }
-        
-        self.tabBarController?.selectedIndex = 2
-        
         
     }
     
@@ -90,7 +101,7 @@ class DetailViewController: UIViewController {
             self.starActive = false
             game.starState = false
             UserDefaults.standard.set(false, forKey: "\(game.gameName)")
-
+            
         }
         
     }
@@ -101,5 +112,5 @@ class DetailViewController: UIViewController {
         
     }
     
-
+    
 }

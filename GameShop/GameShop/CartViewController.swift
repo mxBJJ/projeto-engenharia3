@@ -14,12 +14,18 @@ class CartViewController: UIViewController {
     @IBOutlet weak var btnBuy: UIButton!
     @IBOutlet weak var tableViewCart: UITableView!
     
-      var fetchedResultsController: NSFetchedResultsController<Cart>!
+
+        var cont = 1
+    
+    var fetchedResultsController: NSFetchedResultsController<Cart>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCart()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
     }
     
     
@@ -28,7 +34,7 @@ class CartViewController: UIViewController {
         let fetchRequest: NSFetchRequest<Cart> = Cart.fetchRequest()
               let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
               fetchRequest.sortDescriptors = [sortDescriptor]
-              
+                      
               fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
               
               fetchedResultsController.delegate = self
@@ -59,17 +65,21 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
         
         guard let cartItem = fetchedResultsController.fetchedObjects?[indexPath.row] else{return cell}
         
+        
         cell.prepareCell(with: cartItem)
+        cell.selectionStyle = .none
         
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete{
             
             guard let game = fetchedResultsController.fetchedObjects?[indexPath.row] else {return}
-         
+            
+           
             context.delete(game)
             
             do{
@@ -80,6 +90,13 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
             
         }
     }
+    
+    
+    
+    
+
+    
+    
 
 }
 

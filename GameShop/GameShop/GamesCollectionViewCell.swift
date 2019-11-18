@@ -14,7 +14,7 @@ class GamesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var gameImage: UIImageView!
     @IBOutlet weak var gameName: UILabel!
     @IBOutlet weak var gamePrice: UILabel!
-    
+   
     func prepare(with game: Game){
         
         gameImage.image = game.gameImage
@@ -22,4 +22,5 @@ class GamesCollectionViewCell: UICollectionViewCell {
         gamePrice.text = "R$ \(String(format: "%.2f" ,game.gamePrice))"
         
     }
+    
 }
