@@ -11,18 +11,76 @@
         <!--Favoritos-->
         <scene sceneID="Tzr-A8-k5Q">
             <objects>
-                <viewController id="sdr-uP-bDu" sceneMemberID="viewController">
+                <viewController id="sdr-uP-bDu" customClass="FavoritesViewController" customModule="GameShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5pJ-Pk-L0L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hji-3V-ucm">
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoritesCell" rowHeight="100" id="GfV-Pe-XMI" customClass="FavoritesTableViewCell" customModule="GameShop" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GfV-Pe-XMI" id="yoG-H1-UAu">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rsg-GO-Eq5">
+                                                    <rect key="frame" x="15" y="11" width="86" height="78"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="86" id="dAY-yH-sCs"/>
+                                                        <constraint firstAttribute="height" constant="78" id="udJ-XX-fDy"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call of Duty - Modern Warfare" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byU-c2-xDR">
+                                                    <rect key="frame" x="109" y="26" width="251" height="49"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="byU-c2-xDR" firstAttribute="leading" secondItem="Rsg-GO-Eq5" secondAttribute="trailing" constant="8" id="04n-uV-kOS"/>
+                                                <constraint firstItem="byU-c2-xDR" firstAttribute="top" secondItem="yoG-H1-UAu" secondAttribute="topMargin" constant="15" id="050-qb-XPX"/>
+                                                <constraint firstItem="Rsg-GO-Eq5" firstAttribute="bottom" secondItem="yoG-H1-UAu" secondAttribute="bottomMargin" id="4t6-CT-UQf"/>
+                                                <constraint firstItem="byU-c2-xDR" firstAttribute="leading" secondItem="Rsg-GO-Eq5" secondAttribute="trailing" constant="8" id="9q8-2F-pFa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="byU-c2-xDR" secondAttribute="bottom" constant="14" id="NCm-tK-QDH"/>
+                                                <constraint firstItem="byU-c2-xDR" firstAttribute="trailing" secondItem="yoG-H1-UAu" secondAttribute="trailingMargin" id="RTg-fY-zJb"/>
+                                                <constraint firstItem="Rsg-GO-Eq5" firstAttribute="top" secondItem="yoG-H1-UAu" secondAttribute="topMargin" id="mSX-C2-Of8"/>
+                                                <constraint firstItem="Rsg-GO-Eq5" firstAttribute="leading" secondItem="yoG-H1-UAu" secondAttribute="leadingMargin" id="nNA-D4-vbK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="gameImage" destination="Rsg-GO-Eq5" id="0A2-vp-6Ks"/>
+                                            <outlet property="gameName" destination="byU-c2-xDR" id="tKS-8u-Sa9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="sdr-uP-bDu" id="NCx-Eb-1dw"/>
+                                    <outlet property="delegate" destination="sdr-uP-bDu" id="KMV-my-4al"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hji-3V-ucm" firstAttribute="bottom" secondItem="BTJ-Ol-kpG" secondAttribute="bottom" id="57A-T0-h7v"/>
+                            <constraint firstItem="hji-3V-ucm" firstAttribute="trailing" secondItem="BTJ-Ol-kpG" secondAttribute="trailing" id="Zak-1y-kgv"/>
+                            <constraint firstItem="hji-3V-ucm" firstAttribute="top" secondItem="BTJ-Ol-kpG" secondAttribute="top" id="nDp-4a-vdy"/>
+                            <constraint firstItem="hji-3V-ucm" firstAttribute="leading" secondItem="BTJ-Ol-kpG" secondAttribute="leading" id="vDd-fY-Xo5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BTJ-Ol-kpG"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favoritos" image="star.fill" catalog="system" id="aCk-Pr-DmW"/>
+                    <navigationItem key="navigationItem" title="Favoritos" largeTitleDisplayMode="always" id="kSz-A5-beW"/>
+                    <connections>
+                        <outlet property="tableView" destination="hji-3V-ucm" id="qLz-Rq-kfE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rt6-Xh-rnn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-349" y="832"/>
+            <point key="canvasLocation" x="589.60000000000002" y="831.63418290854577"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Sfc-ng-n2K">
@@ -36,7 +94,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="bV2-XD-oYR" kind="relationship" relationship="viewControllers" id="z2v-8t-S51"/>
-                        <segue destination="sdr-uP-bDu" kind="relationship" relationship="viewControllers" id="mRy-E2-mIt"/>
+                        <segue destination="WCq-6S-FEH" kind="relationship" relationship="viewControllers" id="mRy-E2-mIt"/>
                         <segue destination="kvz-FT-r4e" kind="relationship" relationship="viewControllers" id="aqm-Eu-shU"/>
                         <segue destination="beX-he-hYh" kind="relationship" relationship="viewControllers" id="pyP-nl-Gp5"/>
                     </connections>
@@ -270,12 +328,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vtb-zb-On6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3112" y="112.44377811094454"/>
+            <point key="canvasLocation" x="2930" y="0.0"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="5gQ-Yn-9Pi">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="SOu-IA-a1H" customClass="DetailViewController" customModule="GameShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="DetailViewController" storyboardIdentifier="DetailViewController" id="SOu-IA-a1H" customClass="DetailViewController" customModule="GameShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6lq-jB-q6t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -579,7 +637,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTM-Cn-vq8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3981.5999999999999" y="-1205.3973013493255"/>
+            <point key="canvasLocation" x="4073" y="-1318"/>
         </scene>
         <!--Carrinho-->
         <scene sceneID="dGo-hj-v6Q">
@@ -762,7 +820,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="72n-PX-CuY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="672.79999999999995" y="831.63418290854577"/>
+            <point key="canvasLocation" x="1612" y="831.63418290854577"/>
         </scene>
         <!--Payment View Controller-->
         <scene sceneID="CRW-sR-iu6">
@@ -797,7 +855,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3y-xb-zOh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1516" y="831.63418290854577"/>
+            <point key="canvasLocation" x="2455.1999999999998" y="831.63418290854577"/>
         </scene>
         <!--Configurações-->
         <scene sceneID="mT1-a5-Cok">
@@ -833,6 +891,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Nt-Ac-dyn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2202.898550724638" y="112.5"/>
+        </scene>
+        <!--Favoritos-->
+        <scene sceneID="qUY-Jt-EZb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WCq-6S-FEH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favoritos" image="star.fill" catalog="system" id="aCk-Pr-DmW"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="f4j-Ad-hv1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sdr-uP-bDu" kind="relationship" relationship="rootViewController" id="Rwg-Zl-ztL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="82F-02-e3g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-349.60000000000002" y="831.63418290854577"/>
         </scene>
     </scenes>
     <resources>

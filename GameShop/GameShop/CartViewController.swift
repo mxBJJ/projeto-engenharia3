@@ -91,12 +91,6 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
     
-    
-    
-    
-
-    
-    
 
 }
 

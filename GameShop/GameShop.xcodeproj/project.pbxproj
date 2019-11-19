@@ -13,6 +13,8 @@
 		FE91E83023708F3E0068E6E2 /* MyCoreDataContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE91E82F23708F3E0068E6E2 /* MyCoreDataContext.swift */; };
 		FE94BA77236BCCDB00FDD53F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE94BA76236BCCDB00FDD53F /* DetailViewController.swift */; };
 		FE9FFB5D237CB7AA00760E68 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9FFB5C237CB7AA00760E68 /* PaymentViewController.swift */; };
+		FEA0D65E2384811A0058FA92 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0D65D2384811A0058FA92 /* FavoritesViewController.swift */; };
+		FEA0D6602384814D0058FA92 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0D65F2384814D0058FA92 /* FavoritesTableViewCell.swift */; };
 		FEA7BC582362263400A55EDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA7BC572362263400A55EDE /* AppDelegate.swift */; };
 		FEA7BC5A2362263400A55EDE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA7BC592362263400A55EDE /* SceneDelegate.swift */; };
 		FEA7BC622362263400A55EDE /* GameShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEA7BC602362263400A55EDE /* GameShop.xcdatamodeld */; };
@@ -32,6 +34,8 @@
 		FE91E82F23708F3E0068E6E2 /* MyCoreDataContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoreDataContext.swift; sourceTree = "<group>"; };
 		FE94BA76236BCCDB00FDD53F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FE9FFB5C237CB7AA00760E68 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		FEA0D65D2384811A0058FA92 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		FEA0D65F2384814D0058FA92 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		FEA7BC542362263400A55EDE /* GameShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEA7BC572362263400A55EDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEA7BC592362263400A55EDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 				FE91E82B237083D20068E6E2 /* CartViewController.swift */,
 				FE91E82F23708F3E0068E6E2 /* MyCoreDataContext.swift */,
 				FE9FFB5C237CB7AA00760E68 /* PaymentViewController.swift */,
+				FEA0D65D2384811A0058FA92 /* FavoritesViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -117,6 +122,7 @@
 				FEA7BC78236229AC00A55EDE /* GamesCollectionViewCell.swift */,
 				FE5039AE2362483900DEFFA4 /* Game.swift */,
 				FE91E82D237087780068E6E2 /* CartTableViewCell.swift */,
+				FEA0D65F2384814D0058FA92 /* FavoritesTableViewCell.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -194,6 +200,7 @@
 			files = (
 				FEA7BC73236228E700A55EDE /* HomeViewController.swift in Sources */,
 				FE9FFB5D237CB7AA00760E68 /* PaymentViewController.swift in Sources */,
+				FEA0D65E2384811A0058FA92 /* FavoritesViewController.swift in Sources */,
 				FE5039AF2362483900DEFFA4 /* Game.swift in Sources */,
 				FE91E82E237087780068E6E2 /* CartTableViewCell.swift in Sources */,
 				FEA7BC622362263400A55EDE /* GameShop.xcdatamodeld in Sources */,
@@ -201,6 +208,7 @@
 				FEA7BC582362263400A55EDE /* AppDelegate.swift in Sources */,
 				FEA7BC79236229AC00A55EDE /* GamesCollectionViewCell.swift in Sources */,
 				FEA7BC772362297800A55EDE /* PopularCollectionViewCell.swift in Sources */,
+				FEA0D6602384814D0058FA92 /* FavoritesTableViewCell.swift in Sources */,
 				FE91E83023708F3E0068E6E2 /* MyCoreDataContext.swift in Sources */,
 				FE94BA77236BCCDB00FDD53F /* DetailViewController.swift in Sources */,
 				FEA7BC752362295400A55EDE /* ReleaseGamesCollectionViewCell.swift in Sources */,

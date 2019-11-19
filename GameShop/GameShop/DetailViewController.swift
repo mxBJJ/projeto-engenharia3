@@ -18,13 +18,16 @@ class DetailViewController: UIViewController {
     
     var game: Game!
     var cart: Cart?
+    var favorite: Favorite!
     var starActive: Bool!
+    var fetchedResultsController:NSFetchedResultsController<Favorite>!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(game?.gameName ?? "Empty")
+        
         
         game.starState = UserDefaults.standard.bool(forKey: "\(game.gameName)")
         
@@ -50,8 +53,15 @@ class DetailViewController: UIViewController {
             gamePrice.text = "R$ \(String(format: "%.2f", price))"
         }
         
-        
+    
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        game.starState = false
+      
+    }
+    
     
     @IBAction func buyAction(_ sender: Any) {
         
@@ -67,16 +77,14 @@ class DetailViewController: UIViewController {
         }
         
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-    
-    
         
         if context.hasChanges {
             do {
                 try context.save()
                 let alert = UIAlertController(title: "Adicionado ao carrinho", message: "Seu game foi adicionado ao carrinho com sucesso! Caso o item já esteja no carrinho, nos informe a quantidade desejada.", preferredStyle: .alert)
-
+                
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-
+                
                 self.present(alert, animated: true)
                 self.tabBarController?.selectedIndex = 2
                 
@@ -84,6 +92,24 @@ class DetailViewController: UIViewController {
                 
                 print("Error!")
             }
+        }
+        
+    }
+    
+    func loadFavorites(){
+        
+        let fetchRequest:NSFetchRequest<Favorite> = Favorite.fetchRequest()
+        let sortDescriptor:NSSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        fetchedResultsController.delegate = self
+        
+        do{
+            try fetchedResultsController.performFetch()
+        }catch{
+            print(error.localizedDescription)
         }
         
     }
@@ -96,11 +122,46 @@ class DetailViewController: UIViewController {
             game.starState = true
             UserDefaults.standard.set(true, forKey: "\(game.gameName)")
             
+            if favorite == nil{
+                let favoriteItem = Favorite(context: context)
+                favoriteItem.image = game.gameImage
+                favoriteItem.name = game.gameName
+                print("Created favorite")
+                let alert = UIAlertController(title: "Favoritos", message: "Seu game foi adicionado aos favoritos com sucesso! Confira na sua aba favoritos.", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                
+                self.present(alert, animated: true)
+            }
+            
+            context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            if context.hasChanges{
+                do{
+                    try context.save()
+                }catch{
+                    print(error.localizedDescription)
+                }
+            }
+            
         }else{
             btnStar.setImage(UIImage(named: "star-2"), for: .normal)
             self.starActive = false
             game.starState = false
             UserDefaults.standard.set(false, forKey: "\(game.gameName)")
+            loadFavorites()
+            guard let favorites = fetchedResultsController.fetchedObjects else{return}
+            
+            for f in favorites{
+                if(f.name == game.gameName){
+                    context.delete(f)
+                    do{
+                        try context.save()
+                    }catch{
+                        print("Fail on save!")
+                    }
+                
+                }
+            }
             
         }
         
@@ -110,7 +171,15 @@ class DetailViewController: UIViewController {
         
         verifyStar(starActive: starActive)
         
+        
     }
     
+}
+
+extension DetailViewController: NSFetchedResultsControllerDelegate{
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        
+    }
     
 }
