@@ -23,15 +23,16 @@ class DetailViewController: UIViewController {
     var fetchedResultsController:NSFetchedResultsController<Favorite>!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(game?.gameName ?? "Empty")
         
+        starActive = game.starState
         
         game.starState = UserDefaults.standard.bool(forKey: "\(game.gameName)")
         
         starActive = game.starState
+
         
         if(starActive == false){
             btnStar.setImage(UIImage(named: "star-2"), for: .normal)
@@ -53,13 +54,15 @@ class DetailViewController: UIViewController {
             gamePrice.text = "R$ \(String(format: "%.2f", price))"
         }
         
-    
-    }
-    
-    
+}
+        
     override func viewWillAppear(_ animated: Bool) {
-        game.starState = false
-      
+        starActive =  UserDefaults.standard.bool(forKey: "\(game.gameName)")
+        if(starActive == false){
+                   btnStar.setImage(UIImage(named: "star-2"), for: .normal)
+               }else{
+                   btnStar.setImage(UIImage(named: "star"), for: .normal)
+               }
     }
     
     
