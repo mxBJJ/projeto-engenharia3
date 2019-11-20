@@ -96,7 +96,6 @@
                         <segue destination="bV2-XD-oYR" kind="relationship" relationship="viewControllers" id="z2v-8t-S51"/>
                         <segue destination="WCq-6S-FEH" kind="relationship" relationship="viewControllers" id="mRy-E2-mIt"/>
                         <segue destination="kvz-FT-r4e" kind="relationship" relationship="viewControllers" id="aqm-Eu-shU"/>
-                        <segue destination="beX-he-hYh" kind="relationship" relationship="viewControllers" id="pyP-nl-Gp5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1E-Y4-F6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -857,22 +856,6 @@
             </objects>
             <point key="canvasLocation" x="2455.1999999999998" y="831.63418290854577"/>
         </scene>
-        <!--Configurações-->
-        <scene sceneID="mT1-a5-Cok">
-            <objects>
-                <viewController id="beX-he-hYh" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="R46-bg-0Xq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="HCm-el-boj"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Configurações" image="gear" catalog="system" id="flk-NI-wGD"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6FC-vV-vvh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1222" y="-774"/>
-        </scene>
         <!--Início-->
         <scene sceneID="Hax-lM-wqV">
             <objects>
@@ -917,7 +900,6 @@
         <image name="bar-code" width="512" height="512"/>
         <image name="cart.fill" catalog="system" width="64" height="50"/>
         <image name="credit-card" width="512" height="512"/>
-        <image name="gear" catalog="system" width="64" height="58"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
         <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>
