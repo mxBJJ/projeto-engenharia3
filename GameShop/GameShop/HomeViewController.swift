@@ -11,10 +11,12 @@ import UIKit
 class HomeViewController: UIViewController {
     @IBOutlet weak var gamesCollectionView: UICollectionView!
     @IBOutlet weak var releasesCollectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     var gamesRelease: [Game] = []
     var games: [Game] = []
     let searchController = UISearchController(searchResultsController: nil)
-    @IBOutlet weak var searchBar: UISearchBar!
+    var searchGame: [Game] = []
+    var searching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +102,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == self.releasesCollectionView{
             return gamesRelease.count
         }else{
-            return games.count
+            
+            if searching{
+                return searchGame.count
+            }else{
+                return games.count
+            }
         }
     }
     
@@ -134,9 +141,20 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let cell: GamesCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "games", for: indexPath) as! GamesCollectionViewCell
         
-        let game = games[indexPath.row]
+        if searching{
+            
+            let game = searchGame[indexPath.row]
+            cell.prepare(with: game)
+            
+            
+        }else{
+            
+            let game = games[indexPath.row]
+            cell.prepare(with: game)
+            
+        }
         
-        cell.prepare(with: game)
+        
         
         //This creates the shadows and modifies the cards a little bit
         cell.contentView.layer.cornerRadius = 4.0
@@ -166,10 +184,19 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
         
-        let game = games[indexPath.row]
-        vc?.game = game
+        
+        if searching{
+            let game = searchGame[indexPath.row]
+             vc?.game = game
+        }else{
+            
+            let game = games[indexPath.row]
+             vc?.game = game
+        }
+        
+       
         self.navigationController?.pushViewController(vc!, animated: true)
-    
+        
     }
     
     
@@ -180,6 +207,9 @@ extension HomeViewController: UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
+        searchGame = games.filter( {$0.gameName.capitalized.prefix(searchText.count) == searchText.capitalized} )
+        searching = true
+        gamesCollectionView.reloadData()
     }
     
 }
